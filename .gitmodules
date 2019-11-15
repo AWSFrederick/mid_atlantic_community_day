@@ -1,0 +1,3 @@
+[submodule "themes/aws-community-day-theme"]
+	path = themes/aws-community-day-theme
+	url = https://gitlab.com/ric_harvey/aws-community-day-theme.git

@@ -1,0 +1,116 @@
+title: "Mid Atlantic Community Day"
+canonifyurls: true
+theme: "aws-community-day-theme"
+log: "true"
+logFile: "moo.txt" 
+
+params:
+  # Conference info
+  Name: "Mid Atlantic Community Day"
+  Description: "AWS Community Day in Mid Atlantic"
+  Date: "TBD 2020"
+  Venue: "TBD"
+  Address: "TBD"
+  City:  "TBD"
+  lon: "38.97"
+  lat: "-77.03"
+  map: "enabled"
+  number_of_tracks: "4" # temp hack one more than you need
+
+  # Active sections on the website to deactivate comment out with '#'
+  # you can also change order here and it will reflect on page
+  Sections:
+    - speakers
+    - schedule
+    - sponsors
+
+  # Titles which you can translate to other languages
+  Titles:
+    about: "About"
+    location: "Location"
+    speakers: "Speakers"
+    schedule: "Schedule"
+    sponsors: "Sponsors"
+
+  # The Call To Action button at the header,
+  # If you don't want this, just remove the callToAction property.
+  CallToAction:
+    text: "Register now!"
+    link: "http://register.example.com"
+
+  # List of Speakers
+  Speakers:
+    - name: "Example"
+      photo: "/img/ric.png"
+      linkedin: "https://www.linkedin.com/in/richarvey/"
+      twitter: "ric__harvey"
+      git: "https://gitlab.com/ric_harvey"
+    - name: "Ross Barich"
+      photo: "/img/ross.png"
+      linkedin: "https://www.linkedin.com/in/rossbarich/"
+      twitter: "rossbarich"
+
+  # List of Sponsors
+  Sponsors:
+    - name: "AWS"
+      logo: "/img/aws_logo_smile.png"
+      url: "https://aws.amazon.com"
+    - name: "Hugo"
+      logo: "/img/hugo.png"
+      url: "http://gohugo.io"
+
+  # The entire schedule
+  Schedule:
+    - name: "Check-in / Breakfast"
+      time: "9h00"
+
+    - name: "Session 1"
+      time: "10h00"
+
+    - name: "Session 2"
+      time: "11h00"
+
+    - name: "Lunch"
+      time: "12h00"
+
+    - name: "Session 3"
+      time: "13h00"
+   
+    - name: "Session 4"
+      time: "14h00"
+    
+    - name: "Break"
+      time: "13h00"
+
+    - name: "Session 5"
+      time: "15h30"
+
+    - name: "Session 6"
+      time: "16h30"
+
+deployment:
+  order: [".jpg$", ".gif$"]
+  targets:
+    name: "midatcommday"
+    url: "s3://mid-atlantic-community-day?region=us-east-1"
+
+# If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
+#cloudFrontDistributionID = <ID>
+
+
+# [[deployment.matchers]] configure behavior for files that match the Pattern.
+
+  matchers:
+    #  Cache static assets for 20 years.
+    pattern: "^.+\\.(js|css|svg|ttf)$"
+    cacheControl: "max-age=630720000, no-transform, public"
+    gzip: true
+
+#[[deployment.matchers]]
+#pattern = "^.+\\.(png|jpg)$"
+#cacheControl = "max-age=630720000, no-transform, public"
+#gzip = false
+
+#[[deployment.matchers]]
+#pattern = "^.+\\.(html|xml|json)$"
+#gzip = true 
